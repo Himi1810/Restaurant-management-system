@@ -24,6 +24,7 @@ Route::get("/",[Homecontroller::class,"index"]);
 
 //users
 Route::get("/users",[Admincontroller::class,"user"]);
+Route::get("/deleteuser/{id}",[Admincontroller::class,"deleteuser"]);
 
 
 Route::get("/redirects",[Homecontroller::class,"redirects"]);
