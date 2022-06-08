@@ -18,7 +18,7 @@
   <tr>
     <th style="padding: 40px">Name</th>
     <th style="padding: 40px">Email</th>
-    <th style="padding: 40px">Phone Number</th>
+
 
     <th style="padding: 40px">Action</th>
 
@@ -28,7 +28,7 @@
   <tr align="center">
     <td>{{$data->name}}</td>
     <td>{{$data->email}}</td>
-    <td>{{$data->Phone Number}}</td>
+
 
     @if($data->usertype=="0")
     <td><a href="{{url('/deleteuser',$data->id)}}">Delete</a></td>
