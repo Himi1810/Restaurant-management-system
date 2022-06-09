@@ -26,6 +26,12 @@ Route::get("/",[Homecontroller::class,"index"]);
 Route::get("/users",[Admincontroller::class,"user"]);
 Route::get("/deleteuser/{id}",[Admincontroller::class,"deleteuser"]);
 
+//food
+Route::get("/foodmenu",[Admincontroller::class,"foodmenu"]);
+Route::post("/uploadfood",[Admincontroller::class,"upload"]);
+
+
+
 
 Route::get("/redirects",[Homecontroller::class,"redirects"]);
 
