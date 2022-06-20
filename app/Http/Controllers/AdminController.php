@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\food;
+use App\Models\reservation;
 
 
 class AdminController extends Controller
@@ -20,22 +21,51 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back();
     }
+
+    public function deletemenu($id)
+    {
+        $data=food::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+
+
     public function foodmenu()
     {
+        $data=food::all();
+        return view("admin.foodmenu",compact("data"));
+    }
+
+    public function updateview($id)
+    {
+        $data=food::find($id);
+        return view("admin.updateview",compact("data"));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data=food::find($id);
+        $image=$request->image;
+        $imagename=time(). '.'.  $image->getClientOriginalExtension();
+        $request->image->move('foodimage',$imagename);
+        $data->image=$imagename;
+        $data->title=$request->title;
+        $data->price=$request->price;
+        $data->description=$request->description;
+        $data->save();
+ 
+        return redirect()->back();
        
-        return view("admin.foodmenu",);
     }
 
     public function upload(Request $request)
     {
         $data=new food;
-       $image=$request->image;
 
+       $image=$request->image;
        $imagename=time(). '.'.  $image->getClientOriginalExtension();
        $request->image->move('foodimage',$imagename);
-
        $data->image=$imagename;
-
        $data->title=$request->title;
        $data->price=$request->price;
        $data->description=$request->description;
@@ -44,4 +74,22 @@ class AdminController extends Controller
        return redirect()->back();
     }
 
+
+    public function reservation(Request $request)
+    {
+        $data=new reservation;
+
+    
+       $data->name=$request->name;
+       $data->email=$request->email;
+       $data->phone=$request->phone;
+       $data->guest=$request->guest;
+       $data->date=$request->date;
+       $data->time=$request->time;
+       $data->message=$request->message;
+
+
+
+       return redirect()->back();
+    }
 }

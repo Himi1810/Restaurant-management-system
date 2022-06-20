@@ -29,6 +29,17 @@ Route::get("/deleteuser/{id}",[Admincontroller::class,"deleteuser"]);
 //food
 Route::get("/foodmenu",[Admincontroller::class,"foodmenu"]);
 Route::post("/uploadfood",[Admincontroller::class,"upload"]);
+Route::get("/deletemenu/{id}",[Admincontroller::class,"deletemenu"]);
+Route::get("/updateview/{id}",[Admincontroller::class,"updateview"]);
+Route::post("/update/{id}",[Admincontroller::class,"update"]);
+
+//reservation
+Route::post("/reservation",[Admincontroller::class,"reservation"]);
+
+
+
+
+
 
 
 

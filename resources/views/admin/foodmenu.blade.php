@@ -47,6 +47,40 @@
   
   <button type="submit" class="btn btn-primary">Save</button>
 </form>
+</br>
+<div>
+  
+  <table bgcolor="powderblue">
+    <tr align= "center">
+      <th style="padding-right: 30 px; border-spacing: 30px;">Food Name</th>
+      <th style="padding-right: 30 px; border-spacing: 30px;">Price</th>
+      <th style="padding-right: 30 px; border-spacing: 30px;">Description</th>
+      <th style="padding-right: 30 px; border-spacing: 30px;">Image</th>
+      <th style="padding-right: 30 px; border-spacing: 30px;">Action</th>
+
+
+    </tr>
+
+    @foreach($data as $data)
+
+    <tr align= "center">
+     <td>{{$data->title}}</td>
+     <td>{{$data->price}}</td>
+     <td>{{$data->description}}</td>
+     <td><img height="100px" width="100px" src="/foodimage/{{$data->image}}"></td>
+     <td>
+      <a href="{{url('/deletemenu',$data->id)}}">Delete</a>
+      <a href="{{url('/updateview',$data->id)}}">Update</a>
+
+    </td>
+
+    </tr>
+
+@endforeach
+
+  </table>
+
+</div>
 </div>
 </div>
 
